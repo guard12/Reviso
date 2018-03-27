@@ -28,6 +28,7 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\components\" />
     <Folder Include="Model\" />
+    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\TimeController.cs" />

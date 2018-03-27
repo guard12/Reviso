@@ -40,9 +40,11 @@ export class GetWorkingTime extends Component {
 
     render() {
     let contents = GetWorkingTime.renderAllHours(this.state.workinghours);
-        return  (
-        <h1>All logged hours<h1>
-        <div>{contents}</div>
+        return(
+        <div>
+        <h1>All logged hours</h1>
+        {contents}
+        </div>
         );
     }
 }

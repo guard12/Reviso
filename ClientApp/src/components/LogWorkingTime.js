@@ -17,7 +17,7 @@ export class LogWorkingTime extends Component {
     Project: '',
     Comment: '',
     Date: '',
-    Time: ''
+    Time: 0
     };
 
     }   
@@ -57,6 +57,7 @@ export class LogWorkingTime extends Component {
         <div>
         <h1>Log your working time here</h1>
             <div>
+            <form onSubmit={this.handleSubmit}>
                 <label>Project:</label>
                 <input onChange={this.handleProjectChange} placeholder="My project"></input>
                 <br />
@@ -65,9 +66,10 @@ export class LogWorkingTime extends Component {
                 <label>Date:</label>
                 <input onChange={this.handleDateChange} placeholder="03/25/2017"></input>
                 <label>Time:</label>
-                <input onChange={this.handleTimeChange} placeholder="8 (Hours)" ></input>
+                <input type="number" onChange={this.handleTimeChange} placeholder="8 (Hours)" ></input>
                 <br />
-                <input type="submit" onClick={this.handleSubmit}/>
+                <button type="submit">Save</button>
+                </form>
             </div>
         </div>
         );

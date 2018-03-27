@@ -4,6 +4,7 @@ using System.Web;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Reviso.Model;
+using Reviso.DAL;
 
 namespace Reviso.Controllers
 {
@@ -22,12 +23,8 @@ namespace Reviso.Controllers
         [Route("SaveWorkingTime")]
         public IActionResult SaveWorkingTime([FromBody]TimeLog time)
         {
-            TimeLog tl = new TimeLog();
-            tl.Project = time.Project;
-            tl.Comment = time.Comment;
-            tl.Date = time.Date;
-            tl.Time = time.Time;
-            logs.Add(tl);
+            DBWorkingTime db = new DBWorkingTime();
+            db.SaveLog(time.Project, time.Comment, time.Date, time.Time);
             return Ok();
         }
     }
