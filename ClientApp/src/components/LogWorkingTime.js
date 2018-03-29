@@ -25,6 +25,7 @@ export class LogWorkingTime extends Component {
     handleSubmit(event){
         superagent.post('api/WorkingTime/SaveWorkingTime')
         .send({
+        id: 0,
         Project: this.state.Project,
         Comment: this.state.Comment,
         Date: this.state.Date,

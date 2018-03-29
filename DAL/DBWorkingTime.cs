@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Data.SqlClient;
+using Reviso.Model;
+using System.Collections.Generic;
 
 namespace Reviso.DAL
 {
     public class DBWorkingTime
     {
-        private string connectionString = "Data Source = localhost;User ID=sa;Password=2Y59FUr84;Initial Catalog=Reviso;integrated security=false;";
+        private string connectionString = "Data Source = localhost;User ID=sa;Password=pT20pPnj;Initial Catalog=Reviso;integrated security=false;";
 
         public void SaveLog(string project, string comment, string date, int time)
         {
@@ -27,13 +29,45 @@ namespace Reviso.DAL
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine(e);
+                    throw e;
                 }
             }
             
         }
 
-        public void Test(){
+        public List<TimeLog> GetAllLogs()
+        {
+            List<TimeLog> loglist = new List<TimeLog>();
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+
+            using (sqlconn)
+            {
+                SqlCommand command = new SqlCommand(
+                  "SELECT * FROM dbo.Logs",
+                    sqlconn);
+                sqlconn.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        TimeLog tl = new TimeLog();
+                        tl.id = Convert.ToInt32(reader["LogID"]);
+                        tl.Project = reader["Project"].ToString();
+                        tl.Comment = reader["Comment"].ToString();
+                        tl.Date = reader["Date"].ToString();
+                        tl.Time = Convert.ToInt32(reader["Time"]);
+                        loglist.Add(tl);
+                    }
+                }
+                reader.Close();
+                return loglist;
+            }
+        }
+
+        public void TestConnection(){
             SqlConnection sqlconn = new SqlConnection(connectionString);
             try
             {
@@ -43,7 +77,6 @@ namespace Reviso.DAL
             {
                 throw new Exception(e.ToString());
             }
-
         }
     }
 }

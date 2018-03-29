@@ -12,11 +12,12 @@ namespace Reviso.Controllers
     [Route("api/[controller]")]
     public class WorkingTimeController : Controller
     {
-        private List<TimeLog> logs = new List<TimeLog>();
         [HttpGet("[action]")]
-        public List<TimeLog> WorkingTime()
+        public JsonResult WorkingTime()
         {
-            return logs;
+            DBWorkingTime db = new DBWorkingTime();
+            var logsList = db.GetAllLogs();
+            return Json(logsList);
         }
 
         [HttpPost]
