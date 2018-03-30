@@ -7,10 +7,17 @@ export class GetWorkingTime extends Component {
     constructor(props){
     super(props);
 
-    this.state = { logs: [], loading: false };
+    this.handleFilterChange = this.handleFilterChange.bind(this)
+
+    this.state = { 
+        logs: [],
+        filter: '', 
+        loading: false 
+        };
     }
 
     componentDidMount(){
+
     superagent.get('api/WorkingTime/WorkingTime')
           .accept('json')
           .then(
@@ -20,8 +27,18 @@ export class GetWorkingTime extends Component {
            );
     }
 
-    static renderLogsTable(logs){
-    console.log(logs)
+    static renderLogsTable(logs, filter){
+
+    if(filter !== ''){
+        var filterVal = filter.trim().toLowerCase()
+        if(filterVal.length > 0){
+            logs = logs.filter(l => {
+                return l.project.toLowerCase().match( filterVal );
+
+            });
+        }
+    }
+
     return(
     <table className='table'>
         <thead>
@@ -29,7 +46,7 @@ export class GetWorkingTime extends Component {
             <th>Project</th>
             <th>Comments</th>
             <th>Date</th>
-            <th>Time</th>
+            <th>Time (hours)</th>
           </tr>
         </thead>
         <tbody>
@@ -46,18 +63,23 @@ export class GetWorkingTime extends Component {
     );
     }
 
-
+    handleFilterChange(event){
+        this.setState({ filter: event.target.value });   
+    }
 
     render() {   
+
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : GetWorkingTime.renderLogsTable(this.state.logs);
+      : GetWorkingTime.renderLogsTable(this.state.logs, this.state.filter);
+
         return(
         <div>
         <h1>All logged hours</h1>
-        {contents}
+        <label>Filter:</label>
+        <input type="text" onChange={this.handleFilterChange} placeholder="Project name" />
         <br />
-        <label>Total Hours: </label>
+        {contents}
         </div>
         );
 
