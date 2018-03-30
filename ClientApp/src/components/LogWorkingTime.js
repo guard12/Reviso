@@ -23,7 +23,7 @@ export class LogWorkingTime extends Component {
     }   
 
     handleSubmit(event){
-        superagent.post('api/WorkingTime/SaveWorkingTime')
+        superagent.post('api/LogWorkingTime/SaveWorkingTime')
         .send({
         id: 0,
         Project: this.state.Project,
@@ -60,16 +60,18 @@ export class LogWorkingTime extends Component {
             <div>
             <form onSubmit={this.handleSubmit}>
                 <label>Project:</label>
-                <input onChange={this.handleProjectChange} placeholder="My project"></input>
+                <input className="form-control" onChange={this.handleProjectChange} placeholder="My project"/>
                 <br />
-                <textarea rows="4" cols="100" onChange={this.handleCommentChange}></textarea>
+                <label>Comments:</label>
+                <br />
+                <textarea rows="4" cols="100" onChange={this.handleCommentChange}/>
                 <br />
                 <label>Date:</label>
-                <input onChange={this.handleDateChange} placeholder="03/25/2017"></input>
+                <input className="form-control" onChange={this.handleDateChange} placeholder="03/25/2017"/>
                 <label>Time:</label>
-                <input type="number" onChange={this.handleTimeChange} placeholder="8 (Hours)" ></input>
+                <input className="form-control" type="number" onChange={this.handleTimeChange} placeholder="8 (Hours)" />
                 <br />
-                <button type="submit">Save</button>
+                <button type="submit" className="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>

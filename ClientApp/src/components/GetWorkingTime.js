@@ -18,7 +18,7 @@ export class GetWorkingTime extends Component {
 
     componentDidMount(){
 
-    superagent.get('api/WorkingTime/WorkingTime')
+    superagent.get('api/GetWorkingTime/WorkingTime')
           .accept('json')
           .then(
            res => {
@@ -77,7 +77,7 @@ export class GetWorkingTime extends Component {
         <div>
         <h1>All logged hours</h1>
         <label>Filter:</label>
-        <input type="text" onChange={this.handleFilterChange} placeholder="Project name" />
+        <input className="form-control" type="text" onChange={this.handleFilterChange} placeholder="Project name" />
         <br />
         {contents}
         </div>
