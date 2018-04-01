@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import superagent from 'superagent';
+import './GetWorkingTime.css';
 
 export class GetWorkingTime extends Component {
     displayName = GetWorkingTime.name
@@ -18,7 +19,7 @@ export class GetWorkingTime extends Component {
 
     componentDidMount(){
 
-    superagent.get('api/GetWorkingTime/WorkingTime')
+    superagent.get('api/GetWorkingTime/GetWorkingTimes')
           .accept('json')
           .then(
            res => {

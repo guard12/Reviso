@@ -37,6 +37,8 @@
     <Folder Include="Model\" />
     <Folder Include="DAL\" />
     <Folder Include="Drivers\" />
+    <Folder Include="ClientApp\src\components\GetWorkingtimeComponent\" />
+    <Folder Include="ClientApp\src\components\LogWorkingTimeComponent\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\TimeController.cs" />

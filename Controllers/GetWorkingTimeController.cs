@@ -12,12 +12,23 @@ namespace Reviso.Controllers
     [Route("api/[controller]")]
     public class GetWorkingTimeController : Controller
     {
+        /// <summary>
+        /// Returns the list of all logged working times in Json format
+        /// </summary>
+        /// <returns>Json</returns>
         [HttpGet("[action]")]
-        public JsonResult WorkingTime()
+        public JsonResult GetWorkingTimes()
         {
-            DBGetWorkingTime db = new DBGetWorkingTime();
-            var logsList = db.GetAllLogs();
-            return Json(logsList);
+            try
+            {
+                DBGetWorkingTime db = new DBGetWorkingTime();
+                var logsList = db.GetAllWorkingTimes();
+                return Json(logsList);
+            }
+            catch
+            {
+                throw new JsonException(); 
+            }
         }
     }
 }

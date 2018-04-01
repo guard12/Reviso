@@ -12,13 +12,25 @@ namespace Reviso.Controllers
     [Route("api/[controller]")]
     public class LogWorkingTimeController : Controller
     {
+        /// <summary>
+        /// Gets the TimeLog object from api and passes it to SaveWorkingTime method
+        /// </summary>
+        /// <returns>The working time.</returns>
+        /// <param name="time">TimeLog object</param>
         [HttpPost]
         [Route("SaveWorkingTime")]
         public IActionResult SaveWorkingTime([FromBody]TimeLog time)
         {
-            DBLogWorkingTime db = new DBLogWorkingTime();
-            db.SaveLog(time.Project, time.Comment, time.Date, time.Time);
-            return Ok();
+            try
+            {
+                DBLogWorkingTime db = new DBLogWorkingTime();
+                db.SaveWorkingTime(time.Project, time.Comment, time.Date, time.Time);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }

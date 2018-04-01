@@ -1,0 +1,17 @@
+﻿.form-control{
+    width: 20%;
+    display: inline;
+    margin-right: 1%;
+}
+
+label{
+    margin-right: 1%;
+}
+
+button{
+    margin-top: 5px;
+}
+
+textarea{
+    border-radius: 3px;
+}

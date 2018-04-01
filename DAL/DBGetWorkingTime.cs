@@ -9,7 +9,11 @@ namespace Reviso.DAL
     {
         string connString = DBConnection.getConnString();
 
-        public List<TimeLog> GetAllLogs()
+        /// <summary>
+        /// Gets all working times from database.
+        /// </summary>
+        /// <returns>The list of TimeLog objects from db</returns>
+        public List<TimeLog> GetAllWorkingTimes()
         {
             List<TimeLog> loglist = new List<TimeLog>();
             SqlConnection sqlconn = new SqlConnection(connString);

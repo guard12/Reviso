@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import superagent from 'superagent';
+import './LogWorkingTime.css';
 
 export class LogWorkingTime extends Component {
     displayName = LogWorkingTime.name

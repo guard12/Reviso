@@ -7,7 +7,14 @@ namespace Reviso.DAL
     {
         string connString= DBConnection.getConnString();
 
-        public void SaveLog(string project, string comment, string date, int time)
+        /// <summary>
+        /// Saves the working time into the database.
+        /// </summary>
+        /// <param name="project">Project.</param>
+        /// <param name="comment">Comment.</param>
+        /// <param name="date">Date.</param>
+        /// <param name="time">Time.</param>
+        public void SaveWorkingTime(string project, string comment, string date, int time)
         {
             SqlConnection sqlconn = new SqlConnection(connString);
 
