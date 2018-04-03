@@ -13,7 +13,7 @@ export class GetWorkingTime extends Component {
     this.state = { 
         logs: [],
         filter: '', 
-        loading: false 
+        loading: true 
         };
     }
 
@@ -76,7 +76,7 @@ export class GetWorkingTime extends Component {
 
         return(
         <div>
-        <h1>All logged hours</h1>
+        <h1>All logged hours.</h1>
         <label>Filter:</label>
         <input className="form-control" type="text" onChange={this.handleFilterChange} placeholder="Project name" />
         <br />
