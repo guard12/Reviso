@@ -57,7 +57,7 @@ export class LogWorkingTime extends Component {
     render() {
         return(
         <div>
-        <h1>Log your working time here.</h1>
+        <h1>LOG WORKING TIME</h1>
             <div>
             <form onSubmit={this.handleSubmit}>
                 <label>Project:</label>

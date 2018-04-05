@@ -25,12 +25,12 @@ export class NavMenu extends Component {
             </LinkContainer>
             <LinkContainer to={'/logworkingtime'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> Log Working Time
+                <Glyphicon glyph='plus' /> New Record
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/getworkingtime'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> Working Time
+                <Glyphicon glyph='th-list' /> All Records
               </NavItem>
             </LinkContainer>
           </Nav>
