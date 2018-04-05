@@ -36,6 +36,7 @@ namespace Reviso.DAL
                 {
                     throw e;
                 }
+                sqlconn.Close();
             }
 
         }

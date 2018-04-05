@@ -41,6 +41,7 @@ namespace Reviso.DAL
                     }
                 }
                 reader.Close();
+                sqlconn.Close();
                 return loglist;
             }
         }
